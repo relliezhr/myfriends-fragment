@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Friends n Benefit</string>
+    <string name="add_friend">Tambah Teman</string>
+    <string name="name">Nama</string>
+    <string name="email">Email</string>
+    <string name="telp">No Telp</string>
+    <string name="address">Alamat</string>
+    <string name="save">Simpan</string>
+    <string name="add_friend_button_description">Add a new friend</string>
+</resources>
