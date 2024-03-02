@@ -1,7 +1,13 @@
 import android.os.Parcel
 import android.os.Parcelable
 
-data class MyFriend(val nama: String, val kelamin: String, val email: String,val telp: String, val alamat: String) : Parcelable {
+data class MyFriend(
+    val nama: String,
+    val kelamin: String,
+    val email: String,
+    val telp: String,
+    val alamat: String
+) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString() ?: "",
         parcel.readString() ?: "",
