@@ -11,23 +11,23 @@ import com.example.friendsbenefit.databinding.FriendsFragmentBinding
 
 class MyFriendsFragment : Fragment() {
 
-    private lateinit var listTeman : MutableList<MyFriend>
+    private lateinit var myFriendList : MutableList<MyFriend>
     private lateinit var binding: FriendsFragmentBinding
 
-    private fun simulasiDataTeman() {
-        listTeman = ArrayList()
-        listTeman.add(MyFriend("Relliye", "Perempuan",
+    private fun simulationMyFriendsData() {
+        myFriendList = ArrayList()
+        myFriendList.add(MyFriend("Relliye", "Perempuan",
             "relliye@gmail.com", "082140333911", "Tuban"))
-        listTeman.add(MyFriend("Ujang", "Laki-laki",
+        myFriendList.add(MyFriend("Ujang", "Laki-laki",
             "ujang@gmail.com", "081213416171", "Malang"))
-        listTeman.add(MyFriend("Soepomo", "Laki-laki",
+        myFriendList.add(MyFriend("Soepomo", "Laki-laki",
             "soepomo@gmail.com", "08941796577", "Malang"))
     }
 
-    private fun tampilTeman(){
+    private fun showMyFriends(){
         binding.listMyFriends.layoutManager = LinearLayoutManager(activity)
         binding.listMyFriends.adapter = MyFriendAdapter(requireActivity(),
-            listTeman as ArrayList<MyFriend>
+            myFriendList as ArrayList<MyFriend>
         )
     }
 
@@ -56,7 +56,7 @@ class MyFriendsFragment : Fragment() {
         binding.fabAddFriend.setOnClickListener {
             (activity as MainActivity).tampilMyFriendsAddFragment()
         }
-        simulasiDataTeman()
-        tampilTeman()
+        simulationMyFriendsData()
+        showMyFriends()
     }
 }
