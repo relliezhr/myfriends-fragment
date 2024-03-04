@@ -68,7 +68,4 @@ class MyFriendsFragment : Fragment() {
             myFriendList as ArrayList<MyFriend>
         )
     }
-    override fun onDestroy() {
-        super.onDestroy()
-    }
 }
