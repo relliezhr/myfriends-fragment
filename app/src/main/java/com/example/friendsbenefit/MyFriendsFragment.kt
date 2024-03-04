@@ -18,16 +18,6 @@ class MyFriendsFragment : Fragment() {
     private var db: AppDatabase? = null
     private var myFriendDao: MyFriendDao? = null
 
-//    private fun simulationMyFriendsData() {
-//        myFriendList = ArrayList()
-//        myFriendList.add(MyFriend("Relliye", "Perempuan",
-//            "relliye@gmail.com", "082140333911", "Tuban"))
-//        myFriendList.add(MyFriend("Ujang", "Laki-laki",
-//            "ujang@gmail.com", "081213416171", "Malang"))
-//        myFriendList.add(MyFriend("Soepomo", "Laki-laki",
-//            "soepomo@gmail.com", "08941796577", "Malang"))
-//    }
-
     companion object {
         fun newInstance(): MyFriendsFragment {
             return MyFriendsFragment()
@@ -49,7 +39,7 @@ class MyFriendsFragment : Fragment() {
         initView()
     }
     private fun initLocalDB() {
-        db = AppDatabase.getAppDataBase(requireActivity())
+        db = AppDatabase.getAppDatabase(requireActivity())
         myFriendDao = db?.myFriendDao()
     }
 
@@ -64,14 +54,10 @@ class MyFriendsFragment : Fragment() {
         myFriendDao?.ambilSemuaTeman()?.observe(viewLifecycleOwner, Observer { r ->
             myFriendList = r as MutableList<MyFriend>
             when {
-                myFriendList?.size == 0 -> tampilToast("Belum ada data teman")
+                myFriendList.isEmpty() -> tampilToast("Belum ada data teman")
+                else -> showMyFriends()
             }
-            else -> {
-            showMyFriends()
-
-        }
-        }
-        )
+        })
     }
     private fun tampilToast(message: String) {
         Toast.makeText(requireActivity(), message, Toast.LENGTH_SHORT).show()
@@ -84,7 +70,5 @@ class MyFriendsFragment : Fragment() {
     }
     override fun onDestroy() {
         super.onDestroy()
-        this.clearFindViewByIdCache()
     }
-
 }
