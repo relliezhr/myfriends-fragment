@@ -1,6 +1,5 @@
 package com.example.friendsbenefit
 
-import MyFriend
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

@@ -1,7 +1,9 @@
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.PrimaryKey
+package com.example.friendsbenefit
+
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Entity
 data class MyFriend(
@@ -14,7 +16,7 @@ data class MyFriend(
     val alamat: String
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
-        parcel.readInt(),
+        parcel.readValue(Int::class.java.classLoader) as? Int,
         parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readString() ?: "",
@@ -23,9 +25,7 @@ data class MyFriend(
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        if (friendId != null) {
-            parcel.writeInt(friendId)
-        }
+        parcel.writeValue(friendId)
         parcel.writeString(nama)
         parcel.writeString(kelamin)
         parcel.writeString(email)
